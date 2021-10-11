@@ -1,0 +1,20 @@
+define hook-stop
+
+p "ebp storing: "
+p $ebp
+
+# p "ebp pointing to: "
+# x/wx $ebp
+
+p "Arg 1: "
+x/wx $ebp+0x8
+
+p "Arg 2: "
+x/wx $ebp+0xc
+
+end
+
+break main
+
+# after new frame has been initialised by "push ebp; mov ebp, esp"
+break *0x80491f7
